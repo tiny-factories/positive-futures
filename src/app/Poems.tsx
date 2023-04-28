@@ -48,7 +48,7 @@ export default function Poems() {
   };
 
   return (
-    <div className="w-full max-w-xl">
+    <div className="p-9 w-full h-full">
       {/* <textarea
         value={input}
         onChange={(e) => setInput(e.target.value)}
@@ -58,7 +58,13 @@ export default function Poems() {
          p-4 text-neutral-900 shadow-sm placeholder:text-neutral-400 focus:border-neutral-900"
         placeholder={"e.g. What is React?"}
       /> */}
-      {/* {!loading ? (
+      {response && (
+        <div className="p-9 bg-[#423e3a] text-white rounded-lg bg-white text-4xl  ">
+          {response}
+        </div>
+      )}
+      {!response ? <></> : <div>Share</div>}
+      {!loading ? (
         <button
           className="w-full rounded-xl bg-neutral-900 px-4 py-2 font-medium text-white hover:bg-black/80"
           onClick={(e) => generateResponse(e)}
@@ -66,17 +72,7 @@ export default function Poems() {
           Generate Response &rarr;
         </button>
       ) : (
-        <button
-          disabled
-          className="w-full rounded-xl bg-neutral-900 px-4 py-2 font-medium text-white"
-        >
-          <div className="animate-pulse font-bold tracking-widest">...</div>
-        </button>
-      )} */}
-      {response && (
-        <div className="bg-[#423e3a] text-white mt-8 rounded border bg-white text-4xl p-4 transition ">
-          {response}
-        </div>
+        <div></div>
       )}
     </div>
   );
