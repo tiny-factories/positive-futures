@@ -10,10 +10,10 @@ export default function Nav() {
           <span className="font-bold uppercase">Poems</span>
         </Link>
         <Link
-          href="#"
+          href="https://buttondown.email/madeforearth?tag=poems"
           className="hover:underline hover:underline-offset-2 hover:decoration-2"
         >
-          newletter
+          newsletter
         </Link>
       </div>
     </div>
