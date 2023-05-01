@@ -1,16 +1,22 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Poems() {
   const [loading, setLoading] = useState(false);
   const [input, setInput] = useState("");
   const [response, setResponse] = useState<String>("");
 
-  const prompt = `Q: ${input} Generate a response with less than 200 characters.`;
+  // const prompt = `Q: ${input} Generate a response with less than 200 characters.`;
 
-  const generateResponse = async (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
+  const prompt = `Q: Generate a response with less than 50 characters.`;
+
+  useEffect(() => {
+    generateResponse();
+  }, []);
+
+  const generateResponse = async () => {
+    // e.preventDefault();
     setResponse("");
     setLoading(true);
 
@@ -48,7 +54,35 @@ export default function Poems() {
   };
 
   return (
-    <div className="p-9 w-full h-full">
+    <div className="flex flex-1 flex-col justify-center px-2">
+      <div className="p-2 min-h-1/2 rounded bg-[#EEEDE6]">
+        <div className="p-3 h-5/6">
+          {response && (
+            <div className="font-bold text-2xl text-[#423E3A]">{response}</div>
+          )}
+          <div className="py-3 flex flex flex-wrap justify-between">
+            <div
+              className="grow border-2 border-[#423E3A] rounded text-[#423E3A] text-center text-lg hover:bg-[#423E3A] hover:text-[#EEEDE6] p-2"
+              onClick={() => generateResponse()}
+            >
+              􁉢 Generate Poem
+            </div>
+            <div
+              className="grow sm:grow-0 border-2 border-[#423E3A] rounded text-[#423E3A] text-center text-lg hover:bg-[#423E3A] hover:text-[#EEEDE6] sm:ml-9 p-2"
+              onClick={() => generateResponse()}
+            >
+              􀈄 Download
+            </div>
+            <div
+              className="grow sm:grow-0 border-2 border-[#423E3A] rounded text-[#423E3A] text-center text-lg hover:bg-[#423E3A] hover:text-[#EEEDE6] sm:ml-9 p-2"
+              onClick={() => generateResponse()}
+            >
+              􀈂 Share
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* <textarea
         value={input}
         onChange={(e) => setInput(e.target.value)}
@@ -58,22 +92,8 @@ export default function Poems() {
          p-4 text-neutral-900 shadow-sm placeholder:text-neutral-400 focus:border-neutral-900"
         placeholder={"e.g. What is React?"}
       /> */}
-      {response && (
-        <div className="p-9 bg-[#423e3a] text-white rounded-lg bg-white text-4xl  ">
-          {response}
-        </div>
-      )}
-      {!response ? <></> : <div>Share</div>}
-      {!loading ? (
-        <button
-          className="w-full rounded-xl bg-neutral-900 px-4 py-2 font-medium text-white hover:bg-black/80"
-          onClick={(e) => generateResponse(e)}
-        >
-          Generate Response &rarr;
-        </button>
-      ) : (
-        <div></div>
-      )}
+
+      {!loading ? <div></div> : <div></div>}
     </div>
   );
 }

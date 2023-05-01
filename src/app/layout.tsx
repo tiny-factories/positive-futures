@@ -33,7 +33,7 @@ export default function RootLayout({
         src="https://umami.tinyfactories.space/umami.js"
       ></script>
 
-      <body>{children}</body>
+      <body className="">{children}</body>
     </html>
   );
 }
