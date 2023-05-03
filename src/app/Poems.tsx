@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 
 export default function Poems() {
   const [loading, setLoading] = useState(false);
@@ -15,11 +16,22 @@ export default function Poems() {
     generateResponse();
   }, []);
 
+  const handleDownload = () => {
+    const url = URL.createObjectURL(
+      new Blob([response], { type: "text/plain" })
+    );
+    const link = document.createElement("a");
+    link.href = url;
+    link.setAttribute("download", "response.txt");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   const generateResponse = async () => {
     // e.preventDefault();
     setResponse("");
     setLoading(true);
-
     const response = await fetch("/api/generate", {
       method: "POST",
       headers: {
@@ -67,18 +79,20 @@ export default function Poems() {
             >
               􁉢 Generate Poem
             </div>
-            <div
-              className="grow sm:grow-0 border-2 border-[#423E3A] rounded text-[#423E3A] text-center text-lg hover:bg-[#423E3A] hover:text-[#EEEDE6] sm:ml-9 p-2"
-              onClick={() => generateResponse()}
+            <button
+              className="grow sm:grow-0 border-2 border-[#423E3A] rounded text-[#423E3A] text-center text-lg hover:bg-[#423E3A] hover:text-[#EEEDE6] sm:ml-9 p-2 disabled:text-[#D4D3CC] disabled:border-[#D4D3CC]"
+              disabled={loading}
+              onClick={handleDownload}
             >
               􀈄 Download
-            </div>
-            <div
-              className="grow sm:grow-0 border-2 border-[#423E3A] rounded text-[#423E3A] text-center text-lg hover:bg-[#423E3A] hover:text-[#EEEDE6] sm:ml-9 p-2"
-              onClick={() => generateResponse()}
+            </button>
+            {/* <button
+              className="grow sm:grow-0 border-2 border-[#423E3A] rounded text-[#423E3A] text-center text-lg hover:bg-[#423E3A] hover:text-[#EEEDE6] sm:ml-9 p-2 disabled:text-[#D4D3CC] disabled:border-[#D4D3CC]"
+              disabled={loading}
+              onClick={handleDownload}
             >
               􀈂 Share
-            </div>
+            </button> */}
           </div>
         </div>
       </div>
