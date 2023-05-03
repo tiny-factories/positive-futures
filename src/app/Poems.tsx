@@ -18,7 +18,7 @@ export default function Poems() {
 
   const handleDownload = () => {
     const url = URL.createObjectURL(
-      new Blob([response], { type: "text/plain" })
+      new Blob([response.toString()], { type: "text/plain" })
     );
     const link = document.createElement("a");
     link.href = url;
