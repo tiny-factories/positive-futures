@@ -11,12 +11,10 @@ datasource db {
 }
 
 model Story {
-  id         String    @id
-  location   String?
-  occupation String?
-  date       String?
-  scenario   String?
-  content    String?
-  createdAt  DateTime? @default(now())
+  id        String    @id @default(uuid())
+  date      String?
+  scenario  String?
+  content   String?
+  location  String?
+  createdAt DateTime? @default(now())
 }
-
