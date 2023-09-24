@@ -18,3 +18,11 @@ model Story {
   location  String?
   createdAt DateTime? @default(now())
 }
+
+model Poem {
+  id        String    @id @default(uuid())
+  scenario  String?
+  content   String?
+  createdAt DateTime? @default(now())
+}
+
