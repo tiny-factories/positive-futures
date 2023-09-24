@@ -1,7 +1,8 @@
 // pages/Stories.tsx
 
 import React, { useState, useEffect } from "react";
-import Navigation from "../components/navigation";
+import Navigation from "../components/Navigation";
+
 const scenarioArray = [
   "No Poverty",
   "Zero Hunger",

@@ -1,5 +1,5 @@
 import StoryGenerator from "../components/StoryGenerator";
-import Navigation from "../components/navigation";
+import Navigation from "../components/Navigation";
 
 export default function Home() {
   return (
