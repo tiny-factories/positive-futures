@@ -1,10 +1,8 @@
 import StoryGenerator from "../components/StoryGenerator";
-import Navigation from "../components/Navigation";
-
+import Layout from "../components/Layout";
 export default function Home() {
   return (
-    <div className="bg-tan min-h-screen">
-      <Navigation />
+    <Layout>
       <div className="text-xl mx-auto">
         <div className="py-4 mx-4">
           We stand at a crossroads, fully aware of the challenges ahead but
@@ -17,6 +15,6 @@ export default function Home() {
         </div>
       </div>
       <StoryGenerator />
-    </div>
+    </Layout>
   );
 }
