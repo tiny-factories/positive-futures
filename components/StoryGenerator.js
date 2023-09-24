@@ -24,11 +24,11 @@ const scenarioArray = [
 ];
 
 export default function StoryGenerator() {
-  const [location, setLocation] = useState("San Francisco");
-  const [year, setYear] = useState("2055");
-  const [scenario, setScenario] = useState("No Poverty");
+  const [location, setLocation] = useState("");
+  const [year, setYear] = useState("");
+  const [scenario, setScenario] = useState("");
   const [story, setStory] = useState("");
-  const [occupation, setOccupation] = useState("Urban Planner");
+  const [occupation, setOccupation] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
