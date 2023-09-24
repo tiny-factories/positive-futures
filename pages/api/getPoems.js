@@ -4,24 +4,21 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-const getStories = async (req, res) => {
-  const { location, year, scenario, occupation } = req.query;
+const getPoems = async (req, res) => {
+  const { scenario } = req.query;
 
   let filter = {};
 
-  // if (year) filter.year = year;
-  if (location) filter.location = location;
   if (scenario) filter.scenario = scenario;
-  if (occupation) filter.occupation = occupation;
 
-  const stories = await prisma.poems.findMany({
+  const poems = await prisma.poem.findMany({
     where: filter,
     orderBy: {
       createdAt: "desc",
     },
   });
 
-  res.status(200).json(stories);
+  res.status(200).json(poems);
 };
 
-export default getStories;
+export default getPoems;
