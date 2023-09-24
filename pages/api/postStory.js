@@ -5,14 +5,13 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 export default async (req, res) => {
-  const { location, year, scenario, occupation } = req.query;
+  const { date, location, scenario } = req.query;
 
   let filter = {};
 
-  // if (year) filter.year = year;
+  if (date) filter.date = date;
   if (location) filter.location = location;
   if (scenario) filter.scenario = scenario;
-  if (occupation) filter.occupation = occupation;
 
   const stories = await prisma.story.findMany({
     where: filter,

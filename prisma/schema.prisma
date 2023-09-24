@@ -11,10 +11,12 @@ datasource db {
 }
 
 model Story {
-  id        Int      @id @default(autoincrement())
-  location  String
-  date      DateTime
-  scenario  String
-  content   String
-  createdAt DateTime @default(now())
+  id         String    @id
+  location   String?
+  occupation String?
+  date       String?
+  scenario   String?
+  content    String?
+  createdAt  DateTime? @default(now())
 }
+

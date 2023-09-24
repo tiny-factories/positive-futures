@@ -1,8 +1,9 @@
 // pages/api/generateStory.js
+// This pages POSTs data to OpenAI
 
 export default async (req, res) => {
-  const { location, date, scenario } = req.body;
-  const prompt = `Write a short story based on location: ${location}, date: ${date}, and scenario: ${scenario}.`;
+  const { location, year, scenario, occupation } = req.body;
+  const prompt = `There is so much doom and gloom around climate change. Create a short story about climate change where the main character is a ${occupation} living in ${location} in ${year}. The focus should be on how the character adapts to make the best of climate change based on the ${scenario}UN Cliamte Goal. The overall tone should be realistic but optimistic. I would like the story to be inspirational and hint at humans learning to become better planetary stewards in the future.`;
 
   const response = await fetch(
     "https://api.openai.com/v1/engines/davinci/completions",
