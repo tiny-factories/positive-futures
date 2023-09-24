@@ -1,6 +1,7 @@
 // pages/Stories.tsx
 
 import React, { useState, useEffect } from "react";
+import Navigation from "../components/navigation";
 
 export default function Stories() {
   const [stories, setStories] = useState([]);
@@ -23,8 +24,9 @@ export default function Stories() {
   }, [filters]);
 
   return (
-    <div>
-      {/* Filter Form */}
+    <div className="bg-tan min-h-screen">
+      <Navigation />
+
       <div>
         <input
           type="date"
