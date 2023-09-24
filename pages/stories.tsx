@@ -23,6 +23,7 @@ const scenarioArray = [
 ];
 
 export default function Stories() {
+  const [loading, setLoading] = useState(false);
   const [stories, setStories] = useState([]);
   const [filters, setFilters] = useState({
     date: "",
@@ -32,11 +33,18 @@ export default function Stories() {
 
   useEffect(() => {
     const fetchStories = async () => {
-      const res = await fetch(
-        `/api/getStories?date=${filters.date}&location=${filters.location}&scenario=${filters.scenario}`
-      );
-      const data = await res.json();
-      setStories(data);
+      setLoading(true);
+      try {
+        const res = await fetch(
+          `/api/getStories?date=${filters.date}&location=${filters.location}&scenario=${filters.scenario}`
+        );
+        const data = await res.json();
+        setStories(data);
+      } catch (error) {
+        console.error("Failed to fetch stories:", error);
+      } finally {
+        setLoading(false);
+      }
     };
 
     fetchStories();
@@ -45,44 +53,46 @@ export default function Stories() {
   return (
     <div className="bg-tan min-h-screen">
       <Navigation />
+      <div className="flex flex-wrap">
+        {/*<div className="">
+          <input
+            type="date"
+            value={filters.date}
+            onChange={(e) =>
+              setFilters((prev) => ({ ...prev, date: e.target.value }))
+            }
+          />
+          <input
+            value={filters.location}
+            onChange={(e) =>
+              setFilters((prev) => ({ ...prev, location: e.target.value }))
+            }
+            placeholder="Filter by Location"
+          />
+          <select
+            value={filters.scenario}
+            onChange={(e) =>
+              setFilters((prev) => ({ ...prev, scenario: e.target.value }))
+            }
+          >
+            <option value="">All Scenarios</option>
+            <option value="scenario1">Scenario 1</option>
+            <option value="scenario2">Scenario 2</option>
+          </select>
+        </div>*/}
 
-      <div>
-        <input
-          type="date"
-          value={filters.date}
-          onChange={(e) =>
-            setFilters((prev) => ({ ...prev, date: e.target.value }))
-          }
-        />
-        <input
-          value={filters.location}
-          onChange={(e) =>
-            setFilters((prev) => ({ ...prev, location: e.target.value }))
-          }
-          placeholder="Filter by Location"
-        />
-        <select
-          value={filters.scenario}
-          onChange={(e) =>
-            setFilters((prev) => ({ ...prev, scenario: e.target.value }))
-          }
-        >
-          <option value="">All Scenarios</option>
-          <option value="scenario1">Scenario 1</option>
-          <option value="scenario2">Scenario 2</option>
-        </select>
-      </div>
-
-      {/* Display Stories */}
-      <div>
-        {stories.map((story) => (
-          <div key={story.id}>
-            <h2>
-              {story.location} ({new Date(story.date).toLocaleDateString()})
-            </h2>
-            <p>{story.content}</p>
-          </div>
-        ))}
+        {/* Display Stories */}
+        <div className="py-4 mx-4 border-b-2 flex flex-wrap justify-between justify-center text-xl max-w-md mx-auto">
+          {loading ? (
+            <div className="animate-pulse space-y-2">loading ...</div>
+          ) : (
+            stories.map((story) => (
+              <div key={story.id} className="py-9 border-b-2 border-black">
+                <div className="whitespace-pre-line">{story.content}</div>
+              </div>
+            ))
+          )}
+        </div>
       </div>
     </div>
   );

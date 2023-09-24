@@ -37,7 +37,7 @@ const generateStory = async (req, res) => {
       location,
       date: year,
       scenario,
-      text: generatedContent,
+      content: generatedContent,
     };
     const savedStory = await saveStoryToDb(storyData);
 

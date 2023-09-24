@@ -9,10 +9,12 @@ export default function Navigation() {
 
       <div className="flex flex-wrap">
         <div className="">
-          <Link href="/stories">Past Stories</Link>
+          <Link href="/stories">Stories</Link>
         </div>
         <div className="pl-4">
-          <Link href="/about">About</Link>
+          <Link href="https://madefor.earth/about">
+            About <span className="font-mono">↗</span>
+          </Link>
         </div>
       </div>
     </div>
