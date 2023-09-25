@@ -1,4 +1,3 @@
-import StoryGenerator from "../components/StoryGenerator";
 import Layout from "../components/Layout";
 export default function Home() {
   return (
@@ -14,7 +13,6 @@ export default function Home() {
           envision and work towards a brighter, shared future.
         </div>
       </div>
-      <StoryGenerator />
     </Layout>
   );
 }

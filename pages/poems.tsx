@@ -1,7 +1,8 @@
 // pages/Poems.tsx
 
 import React, { useState, useEffect } from "react";
-import Navigation from "../components/Navigation";
+import Layout from "../components/Layout";
+import PoemGenerator from "../components/PoemGenerator";
 
 const scenarioArray = [
   "No Poverty",
@@ -52,49 +53,28 @@ export default function Poems() {
   }, [filters]);
 
   return (
-    <div className="bg-tan min-h-screen">
-      <Navigation />
+    <Layout>
       <div className="flex flex-wrap">
-        {/*<div className="">
-          <input
-            type="date"
-            value={filters.date}
-            onChange={(e) =>
-              setFilters((prev) => ({ ...prev, date: e.target.value }))
-            }
-          />
-          <input
-            value={filters.location}
-            onChange={(e) =>
-              setFilters((prev) => ({ ...prev, location: e.target.value }))
-            }
-            placeholder="Filter by Location"
-          />
-          <select
-            value={filters.scenario}
-            onChange={(e) =>
-              setFilters((prev) => ({ ...prev, scenario: e.target.value }))
-            }
-          >
-            <option value="">All Scenarios</option>
-            <option value="scenario1">Scenario 1</option>
-            <option value="scenario2">Scenario 2</option>
-          </select>
-        </div>*/}
+        <PoemGenerator />
 
         {/* Display Poems */}
-        <div className="py-4 mx-4 border-b-2 flex flex-wrap justify-between justify-center text-xl max-w-md mx-auto">
-          {loading ? (
-            <div className="animate-pulse space-y-2">loading ...</div>
-          ) : (
-            poems.map((poem) => (
-              <div key={poem.id} className="py-9 border-b-2 border-black">
-                <div className="whitespace-pre-line">{poem.content}</div>
-              </div>
-            ))
-          )}
+        <div>
+          <div className="flex flex-wrap border-b-2 border-black">
+            <div className="">Past Stories</div>
+          </div>
+          <div className="py-4 mx-4 border-b-2 flex flex-wrap justify-between justify-center text-xl max-w-md mx-auto">
+            {loading ? (
+              <div className="animate-pulse space-y-2">loading ...</div>
+            ) : (
+              poems.map((poem) => (
+                <div key={poem.id} className="py-9 border-b-2 border-black">
+                  <div className="whitespace-pre-line">{poem.content}</div>
+                </div>
+              ))
+            )}
+          </div>
         </div>
       </div>
-    </div>
+    </Layout>
   );
 }

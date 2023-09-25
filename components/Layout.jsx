@@ -68,7 +68,7 @@ export default function Layout({ children }) {
       </Head>
 
       <Navigation />
-      <div>{children}</div>
+      <div className="py-4 mx-4">{children}</div>
     </div>
   );
 }

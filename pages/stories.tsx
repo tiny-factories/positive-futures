@@ -1,7 +1,8 @@
 // pages/Stories.tsx
 
 import React, { useState, useEffect } from "react";
-import Navigation from "../components/Navigation";
+import Layout from "../components/Layout";
+import StoryGenerator from "../components/StoryGenerator";
 
 const scenarioArray = [
   "No Poverty",
@@ -52,8 +53,7 @@ export default function Stories() {
   }, [filters]);
 
   return (
-    <div className="bg-tan min-h-screen">
-      <Navigation />
+    <Layout>
       <div className="flex flex-wrap">
         {/*<div className="">
           <input
@@ -81,20 +81,26 @@ export default function Stories() {
             <option value="scenario2">Scenario 2</option>
           </select>
         </div>*/}
+        <StoryGenerator />
 
         {/* Display Stories */}
-        <div className="py-4 mx-4 border-b-2 flex flex-wrap justify-between justify-center text-xl max-w-md mx-auto">
-          {loading ? (
-            <div className="animate-pulse space-y-2">loading ...</div>
-          ) : (
-            stories.map((story) => (
-              <div key={story.id} className="py-9 border-b-2 border-black">
-                <div className="whitespace-pre-line">{story.content}</div>
-              </div>
-            ))
-          )}
+        <div className="">
+          <div className="flex flex-wrap border-b-2 border-black">
+            <div className="">Past Stories</div>
+          </div>
+          <div className="py-4 mx-4 border-b-2 flex flex-wrap justify-between justify-center text-xl max-w-md mx-auto">
+            {loading ? (
+              <div className="animate-pulse space-y-2">loading ...</div>
+            ) : (
+              stories.map((story) => (
+                <div key={story.id} className="py-9 border-b-2 border-black">
+                  <div className="whitespace-pre-line">{story.content}</div>
+                </div>
+              ))
+            )}
+          </div>
         </div>
       </div>
-    </div>
+    </Layout>
   );
 }
