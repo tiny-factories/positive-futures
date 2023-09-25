@@ -17,7 +17,7 @@ export default function Home() {
           <Link href="/stories">
             <button
               type="button"
-              className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              className="rounded-md border-2 border-black px-3.5 py-2.5 text-sm font-semibold hover:text-white shadow-sm hover:bg-black duration-100"
             >
               Create Story
             </button>
@@ -25,7 +25,7 @@ export default function Home() {
           <Link href="/poems">
             <button
               type="button"
-              className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              className="rounded-md border-2 border-black px-3.5 py-2.5 text-sm font-semibold hover:text-white shadow-sm hover:bg-black duration-100"
             >
               Create Poem
             </button>

@@ -46,8 +46,8 @@ export default function StoryGenerator() {
   };
 
   return (
-    <div className="">
-      <div className="flex  flex-wrap items-center justify-center text-xl mx-auto">
+    <div className="w-full">
+      <div className="flex flex-wrap items-center justify-center text-xl mx-auto">
         <div>
           {!story && (
             <div className="">

@@ -1,4 +1,4 @@
-// components/StoryGenerator.js
+// components/PoemGenerator.js
 import Link from "next/link";
 
 import { useState } from "react";
@@ -43,7 +43,7 @@ export default function PoemGenerator() {
   };
 
   return (
-    <div className="">
+    <div className="w-full">
       <div className="flex  flex-wrap items-center justify-center text-xl mx-auto">
         <div>
           {!poem && (
@@ -69,7 +69,7 @@ export default function PoemGenerator() {
             </div>
           )}
 
-          {poem && <div className="">{story}</div>}
+          {poem && <div className="">{poem}</div>}
         </div>
       </div>
     </div>

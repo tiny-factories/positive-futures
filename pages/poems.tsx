@@ -58,9 +58,9 @@ export default function Poems() {
         <PoemGenerator />
 
         {/* Display Poems */}
-        <div>
+        <div className="pt-9 w-full">
           <div className="flex flex-wrap border-b-2 border-black">
-            <div className="">Past Stories</div>
+            <div className="font-medium">Past Stories</div>
           </div>
           <div className="py-4 mx-4 border-b-2 flex flex-wrap justify-between justify-center text-xl max-w-md mx-auto">
             {loading ? (

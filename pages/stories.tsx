@@ -84,7 +84,7 @@ export default function Stories() {
         <StoryGenerator />
 
         {/* Display Stories */}
-        <div className="">
+        <div className="w-full">
           <div className="flex flex-wrap border-b-2 border-black">
             <div className="">Past Stories</div>
           </div>
