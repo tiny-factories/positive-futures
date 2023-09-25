@@ -10,10 +10,19 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Poems {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now()) @db.Timestamp(6)
+model Story {
+  id        String    @id @default(uuid())
+  date      String?
+  scenario  String?
   content   String?
-  published Boolean  @default(false)
+  location  String?
+  createdAt DateTime? @default(now())
+}
+
+model Poem {
+  id        String    @id @default(uuid())
+  scenario  String?
+  content   String?
+  createdAt DateTime? @default(now())
 }
 
