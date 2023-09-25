@@ -60,9 +60,11 @@ export default function Poems() {
         {/* Display Poems */}
         <div className="pt-9 w-full">
           <div className="flex flex-wrap border-b-2 border-black">
-            <div className="font-medium">Past Stories</div>
+            <div className="text-standard sm:text-large uppercase">
+              Past Poems
+            </div>
           </div>
-          <div className="py-4 mx-4 border-b-2 flex flex-wrap justify-between justify-center text-xl max-w-md mx-auto">
+          <div className="py-4 mx-4 border-b-2 flex flex-wrap justify-between justify-center text-small sm:text-standard max-w-md mx-auto">
             {loading ? (
               <div className="animate-pulse space-y-2">loading ...</div>
             ) : (

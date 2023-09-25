@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <Layout>
       <div className="pb-16 pt-20 text-center lg:pt-32">
-        <div className="mx-auto max-w-4xl font-display  font-medium tracking-tight text-2xl">
+        <div className="mx-auto max-w-4xl tracking-tight text-hero">
           We stand at a crossroads, fully aware of the challenges ahead but
           equally equipped with the tools and vision to overcome them. It&apos;s
           time to channel our collective curiosity, to explore not just the

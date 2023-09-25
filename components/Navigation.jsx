@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Navigation() {
   return (
-    <div className="py-4 mx-4 border-b-2 flex flex-wrap border-black justify-between">
+    <div className="py-4 mx-4 border-b-2 flex flex-wrap sm:text-standard md:text-large border-black justify-between">
       <div className="font-bold">
         <Link href="/">Positive Futures</Link>
       </div>
