@@ -2,6 +2,10 @@
 // import { v4 as uuidv4 } from "uuid";
 import { saveStoryToDb } from "../../utils/storyDatabase";
 
+export const config {
+runtime: "edge",
+};
+
 const generateStory = async (req, res) => {
   try {
     const { location, year, scenario, occupation } = req.body;

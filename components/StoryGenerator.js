@@ -46,7 +46,7 @@ export default function StoryGenerator() {
   };
 
   return (
-    <div className="w-full">
+    <div className="col-span-2 sm:col-span-1">
       <div className="py-4 mx-4 border-b-2 flex flex-wrap justify-between justify-center text-xl max-w-md mx-auto">
         <div>
           {!story && (

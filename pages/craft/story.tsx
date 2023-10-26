@@ -1,8 +1,8 @@
 // pages/Stories.tsx
 
 import React, { useState, useEffect } from "react";
-import Layout from "../components/Layout";
-import StoryGenerator from "../components/StoryGenerator";
+import Layout from "../../components/Layout";
+import StoryGenerator from "../../components/StoryGenerator";
 
 const scenarioArray = [
   "No Poverty",
@@ -54,48 +54,10 @@ export default function Stories() {
 
   return (
     <Layout>
-      {loading ? (
-        <>
-          <div className="sticky top-0 bg-light rounded p-4 text-large col-span-1">
-            Loading{" "}
-          </div>
-          <div className="bg-light rounded p-4 text-standard whitespace-pre-line col-span-1">
-            Loading{" "}
-          </div>
-        </>
-      ) : (
-        stories.map((story) => (
-          <>
-            <div className="sticky top-9 z-10 bg-light rounded p-4 text-large whitespace-pre-line col-span-1 m-1">
-              <div className="">title</div>
-              <div className="flex flex-wrap justify-between text-small">
-                <div className="">
-                  <span className="uppercase">Location</span>
-                  {story.location}
-                </div>
-                <div className="">
-                  <span className="uppercase">When</span>
-                  {story.date}
-                </div>
-              </div>
-            </div>
-            <div className="bg-light rounded p-4 text-standard whitespace-pre-line col-span-1 m-1">
-              {story.content}
-            </div>
-          </>
-        ))
-      )}
-
-      <div className="col-span-1">
-        <div> Image of story</div>
-        <div>Sahre</div>
-      </div>
-
-      <div className="col-span-1 min-h-screen"></div>
-
-      <div className="flex flex-wrap">
-        {/* Display Stories */}
-
+      <StoryGenerator />
+      {/* Display Story */}
+      <div className="">
+        Story
         {/* <div className="py-4 mx-4 border-b-2 flex flex-wrap justify-between justify-center text-small sm:text-standard max-w-md mx-auto">
           {loading ? (
             <div className="animate-pulse space-y-2">loading ...</div>

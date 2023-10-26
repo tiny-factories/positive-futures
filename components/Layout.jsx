@@ -23,7 +23,7 @@ export default function Layout({ children }) {
   }, []);
 
   return (
-    <div className="bg-tan min-h-screen">
+    <div className="static bg-dark relative grid grid-cols-1 sm:grid-cols-2 min-h-screen">
       <script
         async
         defer
@@ -68,7 +68,9 @@ export default function Layout({ children }) {
       </Head>
 
       <Navigation />
-      <div className="py-4 mx-4">{children}</div>
+      <div className="col-span-2 mt-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 ">{children}</div>
+      </div>
     </div>
   );
 }

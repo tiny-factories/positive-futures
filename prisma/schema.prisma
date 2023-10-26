@@ -14,6 +14,7 @@ model Story {
   id        String    @id @default(uuid())
   date      String?
   scenario  String?
+  title     String?
   content   String?
   location  String?
   createdAt DateTime? @default(now())
@@ -25,4 +26,5 @@ model Poem {
   content   String?
   createdAt DateTime? @default(now())
 }
+
 
