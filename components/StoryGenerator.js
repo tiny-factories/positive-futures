@@ -1,6 +1,4 @@
-// components/StoryGenerator.js
 import Link from "next/link";
-
 import { useState } from "react";
 
 const scenarioArray = [
@@ -22,6 +20,62 @@ const scenarioArray = [
   "Peace, Justice, and Strong Institutions",
   "Partnerships for the Goals",
 ];
+
+function StoryForm({
+  location,
+  setLocation,
+  year,
+  setYear,
+  scenario,
+  setScenario,
+  occupation,
+  setOccupation,
+  handleSubmit,
+}) {
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4 w-full">
+      Think of an{" "}
+      <input
+        value={occupation}
+        onChange={(e) => setOccupation(e.target.value)}
+        placeholder="occupation"
+        className="w-full m-2 p-2 border-none rounded bg-[#F0EBE3]"
+      />
+      <br />
+      in a
+      <input
+        value={location}
+        onChange={(e) => setLocation(e.target.value)}
+        placeholder="place"
+        className="w-full m-2 p-2 border-none rounded bg-[#F0EBE3]"
+      />
+      <br />
+      in
+      <input
+        value={year}
+        onChange={(e) => setYear(e.target.value)}
+        placeholder="year"
+        className="w-full m-2 p-2 border-none rounded bg-[#F0EBE3]"
+      />
+      <br />
+      if we ...
+      <select
+        value={scenario}
+        onChange={(e) => setScenario(e.target.value)}
+        className="w-full p-2 border-none rounded bg-[#F0EBE3]"
+      >
+        {scenarioArray.map((item, i) => (
+          <option key={i} value={item}>
+            {item}
+          </option>
+        ))}
+      </select>
+      <button className="px-4 py-2 bg-blue-500 text-white rounded">
+        Read a Story
+      </button>
+    </form>
+  );
+}
 
 export default function StoryGenerator() {
   const [location, setLocation] = useState("");
@@ -48,55 +102,21 @@ export default function StoryGenerator() {
   return (
     <div className="col-span-2 sm:col-span-1">
       <div className="py-4 mx-4 border-b-2 flex flex-wrap justify-between justify-center text-xl max-w-md mx-auto">
-        <div>
-          {!story && (
-            <div className="">
-              {" "}
-              <form onSubmit={handleSubmit} className="space-y-4">
-                Think of an{" "}
-                <input
-                  value={occupation}
-                  onChange={(e) => setOccupation(e.target.value)}
-                  placeholder="occupation"
-                  className="m-2 p-2 border-none rounded bg-[#F0EBE3]"
-                />
-                <br />
-                in a
-                <input
-                  value={location}
-                  onChange={(e) => setLocation(e.target.value)}
-                  placeholder="place"
-                  className="m-2 p-2 border-none rounded bg-[#F0EBE3]"
-                />
-                <br />
-                in
-                <input
-                  value={year}
-                  onChange={(e) => setYear(e.target.value)}
-                  placeholder="year"
-                  className="m-2 p-2 border-none rounded bg-[#F0EBE3]"
-                />{" "}
-                if we ...
-                <select
-                  value={scenario}
-                  onChange={(e) => setScenario(e.target.value)}
-                  className="p-2 border-none rounded bg-[#F0EBE3]"
-                >
-                  {scenarioArray.map((item, i) => (
-                    <option key={i} value={item}>
-                      {item}
-                    </option>
-                  ))}
-                </select>
-                <button className="px-4 py-2 bg-blue-500 text-white rounded">
-                  Read a Story
-                </button>
-              </form>
-            </div>
-          )}
-
-          {story && <div className="">{story.content}</div>}
-        </div>
+        {!story ? (
+          <StoryForm
+            location={location}
+            setLocation={setLocation}
+            year={year}
+            setYear={setYear}
+            scenario={scenario}
+            setScenario={setScenario}
+            occupation={occupation}
+            setOccupation={setOccupation}
+            handleSubmit={handleSubmit}
+          />
+        ) : (
+          <div className="">{story.content}</div>
+        )}
       </div>
     </div>
   );

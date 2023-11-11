@@ -4,26 +4,6 @@ import React, { useState, useEffect } from "react";
 import Layout from "../components/Layout";
 import PoemGenerator from "../components/PoemGenerator";
 
-const scenarioArray = [
-  "No Poverty",
-  "Zero Hunger",
-  "Good Health and Well-being",
-  "Quality Education",
-  "Gender Equality",
-  "Clean Water and Sanitation",
-  "Affordable and Clean Energy",
-  "Decent Work and Economic Growth",
-  "Industry, Innovation, and Infrastructure",
-  "Reduced Inequality",
-  "Sustainable Cities and Communities",
-  "Responsible Consumption and Production",
-  "Climate Action",
-  "Life Below Water",
-  "Life on Land",
-  "Peace, Justice, and Strong Institutions",
-  "Partnerships for the Goals",
-];
-
 export default function Poems() {
   const [loading, setLoading] = useState(false);
   const [poems, setPoems] = useState([]);
@@ -52,30 +32,38 @@ export default function Poems() {
     fetchPoems();
   }, [filters]);
 
+  function getRandomPositionClass() {
+    const classes = [
+      "poem-position-left",
+      "poem-position-center",
+      "poem-position-right",
+    ];
+    return classes[Math.floor(Math.random() * classes.length)];
+  }
+
   return (
     <Layout>
       <div className="flex flex-wrap">
-        <PoemGenerator />
-
+        {/* Display Poems */}
         {/* Display Poems */}
         <div className="pt-9 w-full">
-          <div className="flex flex-wrap border-b-2 border-black">
-            <div className="text-standard sm:text-large uppercase">
-              Past Poems
-            </div>
-          </div>
-          <div className="py-4 mx-4 border-b-2 flex flex-wrap justify-between justify-center text-small sm:text-standard max-w-md mx-auto">
+          <div className="py-4 mx-4 border-b-2 text-small sm:text-standard">
             {loading ? (
-              <div className="animate-pulse space-y-2">loading ...</div>
+              <div className="animate-pulse space-y-2 justify-center">
+                loading ...
+              </div>
             ) : (
               poems.map((poem) => (
-                <div key={poem.id} className="py-9 border-b-2 border-black">
+                <div
+                  key={poem.id}
+                  className="my-14 p-9 bg-tan rounded-lg max-w-fit"
+                >
                   <div className="whitespace-pre-line">{poem.content}</div>
                 </div>
               ))
             )}
           </div>
-        </div>
+        </div>{" "}
       </div>
     </Layout>
   );

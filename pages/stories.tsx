@@ -56,17 +56,17 @@ export default function Stories() {
     <Layout>
       {loading ? (
         <>
-          <div className="sticky top-0 bg-light rounded p-4 text-large col-span-1">
+          <div className="sticky top-0 bg-tan rounded p-4 text-large col-span-1">
             Loading{" "}
           </div>
-          <div className="bg-light rounded p-4 text-standard whitespace-pre-line col-span-1">
+          <div className="bg-tan rounded p-4 text-standard whitespace-pre-line col-span-1">
             Loading{" "}
           </div>
         </>
       ) : (
         stories.map((story) => (
           <>
-            <div className="sticky top-9 z-10 bg-light rounded p-4 text-large whitespace-pre-line col-span-1 m-1">
+            <div className="sticky top-9 z-10 bg-tan rounded p-4 text-large whitespace-pre-line col-span-1 m-1">
               <div className="">title</div>
               <div className="flex flex-wrap justify-between text-small">
                 <div className="">
@@ -79,7 +79,7 @@ export default function Stories() {
                 </div>
               </div>
             </div>
-            <div className="bg-light rounded p-4 text-standard whitespace-pre-line col-span-1 m-1">
+            <div className="bg-tan rounded p-4 text-standard whitespace-pre-line col-span-1 m-1">
               {story.content}
             </div>
           </>
