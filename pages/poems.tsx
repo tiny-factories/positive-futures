@@ -47,10 +47,10 @@ export default function Poems() {
         {/* Display Poems */}
         {/* Display Poems */}
         <div className="pt-9 w-full">
-          <div className="py-4 mx-4 border-b-2 text-small sm:text-standard">
+          <div className="py-4 mx-4 text-small sm:text-standard">
             {loading ? (
               <div className="animate-pulse space-y-2 justify-center">
-                loading ...
+                loading 🌎🌍🌏
               </div>
             ) : (
               poems.map((poem) => (
