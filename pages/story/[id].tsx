@@ -2,6 +2,7 @@
 import { GetServerSideProps, NextPage } from "next";
 import prisma from "../../lib/prisma";
 import { Story } from "../../interfaces/story";
+import Image from "next/image";
 
 interface StoryPageProps {
   story: Story;
@@ -20,7 +21,14 @@ const StoryPage: NextPage<StoryPageProps> = ({ story }) => {
 
   return (
     <div className="grid md:grid-cols-2 gap-4 md:h-screen">
-      <div className="md:sticky top-0 h-auto md:h-screen">Images</div>
+      <div className="md:sticky top-0 h-auto md:h-screen">
+        <Image
+          src={story.imageUrl}
+          alt="Picture of the author"
+          width={500}
+          height={500}
+        />
+      </div>
       <div className="overflow-auto">
         {/* Audio Player */}
         {story.audioUrl && (

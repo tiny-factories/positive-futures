@@ -1,4 +1,4 @@
-import prisma from '../../lib/prisma';
+import prisma from "../../../lib/prisma";
 
 export const getServerSideProps = async (context) => {
   const story = await prisma.story.findUnique({

@@ -1,12 +1,51 @@
 // Import the function from the module
 // import { v4 as uuidv4 } from "uuid";
-import { saveStoryToDb } from "../../utils/storyDatabase";
+import { saveStoryToDb, updateStoryWithImage } from "../../utils/storyDatabase";
 
-export const config {
-runtime: "edge",
-};
+const baseUrl = process.env.VERCEL_URL
+  ? `https://${process.env.VERCEL_URL}`
+  : "http://localhost:3000";
+const blobEndpoint = `${baseUrl}/api/uploadImage`;
 
-const generateStory = async (req, res) => {
+async function generateImageWithDalle(prompt) {
+  // Replace with actual DALL-E API endpoint
+  const dalleEndpoint = "https://api.openai.com/v1/dalle-generate-endpoint";
+
+  const response = await fetch(dalleEndpoint, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ prompt: prompt /* other necessary parameters */ }),
+  });
+
+  const responseData = await response.json();
+  // Assuming responseData contains the image data
+  return responseData.imageData; // Adjust based on actual response structure
+}
+
+// Function to upload image to blob storage and return the URL
+async function uploadImageToBlob(imageData) {
+  // Replace with your blob storage API endpoint
+
+  const response = await fetch(blobEndpoint, {
+    method: "POST",
+    headers: {
+      // Any necessary headers
+    },
+    body: imageData, // The image data received from DALL-E
+  });
+
+  if (!response.ok) {
+    throw new Error(`Failed to upload image: ${response.statusText}`);
+  }
+
+  const result = await response.json();
+  return result.url; // Assuming result contains the URL of the uploaded image
+}
+
+export default async function generateStory(req, res) {
   try {
     const { location, year, scenario, occupation } = req.body;
 
@@ -45,12 +84,17 @@ const generateStory = async (req, res) => {
     };
     const savedStory = await saveStoryToDb(storyData);
 
-    return res.status(200).json({ story: savedStory });
+    // Image generation and upload logic
+    const imagePrompt = `An image representing ${scenario}`;
+    const imageData = await generateImageWithDalle(imagePrompt);
+    const imageUrl = await uploadImageToBlob(imageData);
+
+    // Update the story with the image URL
+    const updatedStory = await updateStoryWithImage(savedStory.id, imageUrl);
+
+    return res.status(200).json({ story: updatedStory });
   } catch (error) {
-    console.error("Error generating story:", error);
-    return res
-      .status(500)
-      .json({ error: "Failed to generate and save story." });
+    console.error("Error in story/image generation:", error);
+    return res.status(500).json({ error: "Failed in the process." });
   }
-};
-export default generateStory;
+}

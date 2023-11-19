@@ -9,3 +9,10 @@ export async function saveStoryToDb(storyData) {
   });
   return savedStory;
 }
+
+export async function updateStoryWithImage(storyId, imageUrl) {
+  return prisma.story.update({
+    where: { id: storyId },
+    data: { imageUrl: imageUrl },
+  });
+}
