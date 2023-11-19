@@ -19,6 +19,7 @@ model Story {
   location  String?
   createdAt DateTime? @default(now())
   audioUrl  String?
+  imageUrl String?
 }
 
 model Poem {
@@ -27,4 +28,5 @@ model Poem {
   content   String?
   createdAt DateTime? @default(now())
   audioUrl  String?
+  imageUrl String?
 }
